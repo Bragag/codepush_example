@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
 	SafeAreaView,
 	StyleSheet,
@@ -15,8 +15,16 @@ import {
 	Text,
 	StatusBar,
 } from 'react-native';
+import codePush from "react-native-code-push";
 
 const App = () => {
+
+	useEffect(() => {
+		codePush.sync({
+			updateDialog: true,
+			installMode: codePush.InstallMode.IMMEDIATE
+		});
+	})
 	return (
 		<>
 			<StatusBar barStyle="dark-content" />
@@ -26,7 +34,7 @@ const App = () => {
 					style={styles.scrollView}>
 					<View style={styles.body}>
 						<View style={styles.sectionContainer}>
-							<Text style={styles.sectionTitle}>App exemplo</Text>
+							<Text style={styles.sectionTitle}>Exemplo app</Text>
 						</View>
 					</View>
 				</ScrollView>
